@@ -14,9 +14,14 @@ public class buildingApi {
     private BuildingService buildingService;
         @GetMapping(value = "/api/building/")
     public List<BuildingDTO> building(@RequestParam(value = "name",required = false) String name,
-                                      @RequestParam(value = "ward_id",required = false) Long ward_id) {
-        List<BuildingDTO> result = buildingService.findAll(name,ward_id);
-
+                                      @RequestParam(value = "maxBuilding_area",required = false) Long maxBuilding_area,
+                                      @RequestParam(value = "minBuilding_area",required = false) Long minBuilding_area,
+                                      @RequestParam(value = "rental_cost",required = false) Long rental_cost,
+                                      @RequestParam(value = "level",required = false) String level,
+                                      @RequestParam(value = "payment",required = false) String payment,
+                                      @RequestParam(value = "manager_name",required = false) String manager_name,
+                                      @RequestParam(value = "direction",required = false) String direction) {
+        List<BuildingDTO> result = buildingService.findAll(name,maxBuilding_area,minBuilding_area,rental_cost,level,payment,manager_name,direction);
         return result;
     }
 
